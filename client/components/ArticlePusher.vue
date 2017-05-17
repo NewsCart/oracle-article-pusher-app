@@ -75,8 +75,8 @@
             <select class="multiselect-box" v-model="company" id="company" multiple>
               <option>NBC</option>
               <option>Time Inc</option>
-              <!--<option>World Nomads</option>
-              <option>Because Of Them We Can</option>
+              <option>World Nomads</option>
+              <!--<option>Because Of Them We Can</option>
               <option>Turner Center</option> -->
             </select>
             <p :hidden="isCompanySelected" class="topic-prompt">Please assign company</p>

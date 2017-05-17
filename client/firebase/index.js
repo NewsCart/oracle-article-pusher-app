@@ -1,6 +1,6 @@
 var config = {
-  apiKey: '',
-  databaseURL: ''
+  'apiKey': '',
+  'databaseURL': ''
 }
 
 const fb = firebase.initializeApp(config)
