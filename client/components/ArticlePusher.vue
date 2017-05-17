@@ -29,7 +29,7 @@
 
           <section>
             <label for="image">Image URL</label>
-            <input type="text" v-model="imageLink" v-validate="'url'" name="image" id="image">
+            <input type="text" v-model="imageLink" v-validate="'required|url'" name="image" id="image">
             <span class="input-error" v-if="errors.has('image')">{{errors.first('image')}}</span>
           </section>
 
@@ -79,6 +79,7 @@
               <option>Because Of Them We Can</option>
               <option>Turner Center</option> -->
             </select>
+            <p :hidden="isCompanySelected" class="topic-prompt">Please assign company</p>
           </section>
           <button id="submit-article" class="submit-btn" :disabled="!isFormFilled" @click="addArticle">Submit</button>
         </form>
@@ -124,11 +125,15 @@
           this.source.length >= 1 &&
           this.url.length >= 1 &&
           this.description.length >= 1 &&
-          this.topic.length > 0
+          this.topic.length > 0 &&
+          this.company.length > 0
         )
       },
       isTopicSelected: function(){
         return (this.topic.length>0)
+      },
+      isCompanySelected: function(){
+        return (this.company.length>0)
       },
       sourcePush: function() {
         return encodeURIComponent(this.source.toLowerCase().split(' ').filter( x => x !== "").join('-'));
@@ -161,28 +166,52 @@
       addArticle(e) {
         e.preventDefault();
         let objectIDHolder = this.objectID;
-        this.articlesRef.child(objectIDHolder).set({
-          publishedAt: this.date,
-          author: this.authorPush,
-          source: this.sourcePush,
-          title: this.titlePush,
-          url: this.url,
-          urlToImage: this.imageLink,
-          description: this.description,
-          topic: this.topic,
-          company: this.company,
-          objectID: this.objectID
-        })
-        .then(() => {
-          this.$swal({
-            title: 'Success!',
-            text: 'Your article was submitted',
-            type: 'success'
+        let companyHolder = this.company;
+        if(this.company.length == 1){
+          fb.database().ref(companyHolder[0]).child(objectIDHolder).set({
+            publishedAt: this.date,
+            author: this.authorPush,
+            source: this.sourcePush,
+            title: this.titlePush,
+            url: this.url,
+            urlToImage: this.imageLink,
+            description: this.description,
+            topic: this.topic,
+            objectID: this.objectID
+          }).then(() => {
+            this.$swal({
+              title: 'Success!',
+              text: 'Your article was submitted',
+              type: 'success'
+            })
           })
-        })
-        .catch(err => {
-          console.log('Error', err);
-        })
+          .catch(err => {
+            console.log('Error', err);
+          })
+        }else{
+          for(let i = 0; i <= this.company.length; i++){
+            fb.database().ref(companyHolder[i]).child(objectIDHolder).set({
+              publishedAt: this.date,
+              author: this.authorPush,
+              source: this.sourcePush,
+              title: this.titlePush,
+              url: this.url,
+              urlToImage: this.imageLink,
+              description: this.description,
+              topic: this.topic,
+              objectID: this.objectID
+          }).then(() => {
+            this.$swal({
+              title: 'Success!',
+              text: 'Your article was submitted',
+              type: 'success'
+            })
+          })
+          .catch(err => {
+            console.log('Error', err);
+          })
+        }
+      }
         this.clearInputFields();
       },
       clearInputFields() {
