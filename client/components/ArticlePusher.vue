@@ -116,7 +116,7 @@
         return 70 - state.description.length;
       },
       objectID: function(){
-        return encodeURIComponent(this.title.split(' ').join('').toLowerCase());
+        return encodeURIComponent(this.source.split(' ').join('').toLowerCase() + "-" + this.title.split(' ').join('').toLowerCase());
       },
       isFormFilled: function () {
         return (
@@ -163,12 +163,15 @@
       }
     },
     methods: {
+      guidPart() {
+        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+      },
       addArticle(e) {
         e.preventDefault();
         let objectIDHolder = this.objectID;
         let companyHolder = this.company;
         if(this.company.length == 1){
-          fb.database().ref(companyHolder[0]).child(objectIDHolder).set({
+          fb.database().ref(companyHolder[0]).child(objectIDHolder + "-" + this.guidPart()).set({
             publishedAt: this.date,
             author: this.authorPush,
             source: this.sourcePush,
@@ -190,7 +193,7 @@
           })
         }else{
           for(let i = 0; i <= this.company.length; i++){
-            fb.database().ref(companyHolder[i]).child(objectIDHolder).set({
+            fb.database().ref(companyHolder[i]).child(objectIDHolder + "-" + this.guidPart()).set({
               publishedAt: this.date,
               author: this.authorPush,
               source: this.sourcePush,
