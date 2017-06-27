@@ -110,7 +110,7 @@
   export default {
     computed: {
       date: function () {
-        return moment().format('MMMM DD YYYY h:mm A');
+        return moment().utc().format()
       },
       charsLeft(state) {
         return 70 - state.description.length;
