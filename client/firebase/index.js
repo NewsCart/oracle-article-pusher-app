@@ -1,6 +1,8 @@
 var config = {
   'apiKey': '',
-  'databaseURL': ''
+  'authDomain': '',
+  'databaseURL': '',
+  'storageBucket': ''
 }
 
 const fb = firebase.initializeApp(config)

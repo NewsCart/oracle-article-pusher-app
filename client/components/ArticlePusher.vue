@@ -35,10 +35,10 @@
 
           <section>
             <label for="description">Description</label>
-            <textarea name="description" v-model="description" v-validate="'required'" id="description" maxlength="70">
+            <textarea name="description" v-model="description" v-validate="'required'" id="description">
             </textarea>
             <span class="input-error" v-if="errors.has('description')">{{errors.first('description')}}</span>
-            <p class="chars-left">{{charsLeft}} characters left</p>
+            <!-- <p class="chars-left">{{charsLeft}} characters left</p> -->
           </section>
 
           <section>
