@@ -14,30 +14,52 @@ a:hover{
 	color: #1700fc;
 }
 
-input{
-	width: 300px;
-}
-
 textarea{
 	height: 40px;
-	width: 300px
+	width: 80%;
+}
+
+.headline{
+  height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #d3d3d3;
+  box-shadow: 1px 2px 4px rgba(0,0,0,.1);
+}
+
+.headline h2{
+  font-weight: 200;
+  font-size: 22px;
+  color: rgba(0, 0, 0, .87);
 }
 
 .app-wrapper{
 	margin-left: 20px;
-
 }
 
 .form-wrapper{
   padding-left: 5px;
-	width: 45%;
+	width: 50%;
 	float: left;
   margin-left: 15px;
+  border-right: 1px solid #d3d3d3;
+  margin-top: 30px;
+}
+
+.input-box{
+  border-radius: 5px;
+  border: 1px solid #3c465a;
+  padding: .75em 1em;
+  font-size: 11px;
+  color: #3c465a;
+  margin: 10px;
+  width: 80%;
 }
 
 .input-error{
   color: #f75465;
   font-size: 12px;
+  display: block;
+  margin-left: 10px;
 }
 
 .multiselect-box{
@@ -84,12 +106,19 @@ textarea{
 }
 
 .preview-wrapper{
-	width: 45%;
+	width: 48%;
 	float: right;
 }
 
 .preview{
-	margin-right: 50px;
+text-align: center;
+}
+
+.preview h2{
+  font-weight: 200;
+  font-size: 18px;
+  color: rgba(0, 0, 0, .87);
+  margin-bottom: 20px;
 }
 
 .preview-img{
@@ -98,6 +127,7 @@ textarea{
 }
 
 .preview-content {
+  margin-top: 20px;
 	width: 100%;
 }
 .preview-content p{
@@ -125,7 +155,10 @@ textarea{
 }
 
 .preview-title{
+  color: #fff;
+  font-size: 16px;
 	margin-bottom: 10px;
+  text-align: left;
 }
 
 .chars-left{
@@ -145,9 +178,31 @@ textarea{
 }
 
 .preview-source {
-  font-size: 14px;
+  font-size: 12px;
+  text-align: left;
+  color: #fff;
+  font-weight: 200;
+  padding-top: 10px
 }
 
+.newscard{
+  margin: auto;
+  height: 370px;
+  min-width: 230px;
+  max-width: 275px;
+  background-size: cover;
+  border: 3px solid #d3d3d3;
+  background-position: 50%;
+  /*background: linear-gradient(0deg,rgba(0,0,0,.8),transparent);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8), transparent);*/
+}
+
+.newscard-content{
+  padding: 14px;
+  padding-top: 50%;
+  margin-bottom: 0px;
+
+}
 
 
 /*Newscart Styling*/

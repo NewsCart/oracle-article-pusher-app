@@ -1,41 +1,44 @@
 <template lang="html">
   <div>
+      <div class="headline">
+          <h2>PROMETHEUS</h2>
+      </div>
+<!--  ||| FORM START ||| -->
       <div class="form-wrapper">
-        <h2>NewsCart Article Pusher</h2>
         <form class="article-input-form">
           <section>
-            <label for="title">Title</label>
-            <input type="text" v-model="title" v-validate="'required'" name="title" id="title" required spellcheck="true">
+            <!-- <label for="title">Title</label> -->
+            <input class="input-box" placeholder="Title" type="text" v-model="title" v-validate="'required'" name="title" id="title" required spellcheck="true">
             <span class="input-error" v-if="errors.has('title')">{{errors.first('title')}}</span>
           </section>
 
           <section>
-            <label for="author">Author</label>
-            <input type="text" v-model="author" v-validate="'required'" name="author" id="author" required spellcheck="true">
+            <!-- <label for="author">Author</label> -->
+            <input class="input-box" placeholder="Author" type="text" v-model="author" v-validate="'required'" name="author" id="author" required spellcheck="true">
             <span class="input-error" v-if="errors.has('author')">{{errors.first('author')}}</span>
           </section>
 
           <section>
-            <label for="source">Source</label>
-            <input type="text" v-model="source" v-validate="'required'" name="source" id="source" required spellcheck="true">
+            <!-- <label for="source">Source</label> -->
+            <input class="input-box" placeholder="Source" type="text" v-model="source" v-validate="'required'" name="source" id="source" required spellcheck="true">
             <span class="input-error" v-if="errors.has('source')">{{errors.first('source')}}</span>
           </section>
 
           <section>
-            <label for="url">Article URL</label>
-            <input type="text" v-model="url" v-validate="'required|url'" name="url" id="url" required>
+            <!-- <label for="url">Article URL</label> -->
+            <input class="input-box" placeholder="Article URL" type="text" v-model="url" v-validate="'required|url'" name="url" id="url" required>
             <span class="input-error" v-if="errors.has('url')">{{errors.first('url')}}</span>
           </section>
 
           <section>
-            <label for="image">Image URL</label>
-            <input type="text" v-model="imageLink" v-validate="'required|url'" name="image" id="image">
+            <!-- <label for="image">Image URL</label> -->
+            <input class="input-box" placeholder="Image URL" type="text" v-model="imageLink" v-validate="'required|url'" name="image" id="image">
             <span class="input-error" v-if="errors.has('image')">{{errors.first('image')}}</span>
           </section>
 
           <section>
-            <label for="description">Description</label>
-            <textarea name="description" v-model="description" v-validate="'required'" id="description">
+            <!-- <label for="description">Description</label> -->
+            <textarea class="input-box" placeholder="Description" name="description" v-model="description" v-validate="'required'" id="description">
             </textarea>
             <span class="input-error" v-if="errors.has('description')">{{errors.first('description')}}</span>
             <!-- <p class="chars-left">{{charsLeft}} characters left</p> -->
@@ -81,28 +84,37 @@
             </select>
             <p :hidden="isCompanySelected" class="topic-prompt">Please assign company</p>
           </section>
+          <section>
+            <input type="checkbox" id="checkbox" v-model="recommended" style="display: inline-block;">
+            <label style="display: inline-block;" for="checkbox">Recommended</label>
+          </section>
           <button id="submit-article" class="submit-btn" :disabled="!isFormFilled" @click="addArticle">Submit</button>
         </form>
       </div>
-
+<!-- ||| FORM END ||| -->
+<!-- ||| PREVIEW START ||| -->
       <div class="preview-wrapper">
         <div class="preview">
-      		<h2>Preview</h2>
-      		<div>
-      		 <img id="preview-img" :src="imageLink" alt="" class="preview-img">
+      		<h2>PREVIEW</h2>
+      		<div class="newscard" :style="{ 'background-image': 'url(' + imageLink + ')' }" style="background: linear-gradient(0deg,rgba(0,0,0,.8),transparent);">
+            <div class="newscard-content">
+                <h3 class="preview-title">{{ titlePush }}</h3>
+                <p class="preview-source">{{ sourcePush }}</p>
+                <p class="preview-source">{{ date }}</p>
+            </div>
+      		 <!-- <img id="preview-img" :src="imageLink" alt="" class="preview-img"> -->
       		</div>
       		<div class="preview-content">
-      			<h3 class="preview-title">{{titlePush}}</h3>
-            <p class="preview-author">{{ authorPush }}</p>
-            <p class="preview-source">{{ sourcePush }}</p>
-      			<p class="preview-description">{{description}}</p>
-      			<p><a :href="url" class="preview-link" target="_blank">{{url}}</a></p>
-            <p>Topics: {{topic}}</p>
-            <p>{{company}}</p>
+            <!-- <p class="preview-author">{{ authorPush }}</p> -->
+      			<!-- <p><a :href="url" class="preview-link" target="_blank">{{ url }}</a></p> -->
+            <p>Topics: {{ topic }}</p>
+            <p class="preview-description">Description: {{ description }}</p>
+            <!-- <p>{{ company }}</p> -->
       		</div>
         </div>
   	  </div>
     </div>
+    <!-- ||| PREVIEW END ||| -->
 </template>
 <script type="text/javascript">
   import moment from 'moment'
@@ -158,8 +170,8 @@
         imageLink: '',
         description: '',
         topic: [],
-        company: []
-
+        company: [],
+        recommended: false
       }
     },
     methods: {
@@ -177,7 +189,8 @@
             urlToImage: this.imageLink,
             description: this.description,
             topic: this.topic,
-            objectID: this.objectID
+            objectID: this.objectID,
+            recommended: this.recommended
           }).then(() => {
             this.$swal({
               title: 'Success!',
@@ -199,7 +212,8 @@
               urlToImage: this.imageLink,
               description: this.description,
               topic: this.topic,
-              objectID: this.objectID
+              objectID: this.objectID,
+              recommended: this.recommended
           }).then(() => {
             this.$swal({
               title: 'Success!',
