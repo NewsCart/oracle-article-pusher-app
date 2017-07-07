@@ -238,6 +238,7 @@
         this.description = '';
         this.topic = [];
         this.company = [];
+        this.recommended = false;
       },
       signIn() {
         var email = this.email;
