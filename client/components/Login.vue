@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="login-wrapper">
-    <h1 class="login-header">Article Pusher Log In</h1>
+    <h1 class="login-header">PROMETHEUS | Newscart</h1>
     <form>
       <section class="login-input">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" v-model="email">
+        <!-- <label for="email">Email</label> -->
+        <input class="input-box-login" type="text" name="email" placeholder="Email" id="email" v-model="email">
       </section>
       <section class="login-input">
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password">
+        <!-- <label for="password">Password:</label> -->
+        <input class="input-box-login" type="password" id="password" placeholder="Password" v-model="password">
       </section>
       <button id="log-in" class="submit-btn" @click="handleLogin">Log In</button>
     </form>

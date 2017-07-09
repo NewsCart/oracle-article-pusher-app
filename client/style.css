@@ -19,6 +19,10 @@ textarea{
 	width: 80%;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
 .headline{
   height: 50px;
   text-align: center;
@@ -53,6 +57,16 @@ textarea{
   color: #3c465a;
   margin: 10px;
   width: 80%;
+}
+
+.input-box-login{
+  border-radius: 5px;
+  border: 1px solid #3c465a;
+  padding: .75em 1em;
+  font-size: 11px;
+  color: #3c465a;
+  margin-bottom: 10px;
+  width: 75%;
 }
 
 .input-error{
@@ -252,6 +266,8 @@ textarea{
 .login-header{
 	font-size: 35px;
   margin-bottom: 0;
+  color:rgba(0, 0, 0, .87);
+  font-weight: 200;
 }
 
 .login-input{
