@@ -47,54 +47,53 @@
           <section>
             <!-- <label for="topic">Topic:</label> -->
             <div class="select-launcher" @click="toggleSelect('topic')">
-              <h4 class="select-title">Topic</h4>
+              <h4 class="select-title" v-if="this.topic.length == 0">Topic</h4>
+              <h4 class="select-title" v-else-if="this.topic.length ==1">Topic: {{this.topic[0]}}</h4>
+              <h4 class="select-title" v-else-if="this.topic.length ==2">Topic: {{this.topic[0]}}, {{this.topic[1]}}</h4>
+              <h4 class="select-title" v-else style="font-size:smaller;">Topic: {{this.topic[0]}}, {{this.topic[1]}}, {{this.topic[2].substr(0,3)}}...</h4>
               <div class="arrow-down"></div>
             </div>
             <div class="multiselect-box" :hidden="topicToggle" v-model="topic" multiple>
               <input type="checkbox" class=" multiselect-box-option hidden" id="artificial-intelligence" v-model="topic" value="Artificial Intelligence">
               <label class='multiselect-box-option' for="artificial-intelligence">Artificial Intelligence</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="AR/VR" v-model="topic" value="AR/VR">
-              <label class='multiselect-box-option' for="AR/VR">AR/VR</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="big-data" v-model="topic" value="Big Data">
-              <label class='multiselect-box-option' for="big-data">Big Data</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="bots" v-model="topic" value="Bots">
-              <label class='multiselect-box-option' for="bots">Bots</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="brands" v-model="topic" value="Brands">
               <label class='multiselect-box-option' for="brands">Brands</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="commerce" v-model="topic" value="Commerce">
-              <label class='multiselect-box-option' for="commerce">Commerce</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="consumer-tech" v-model="topic" value="Consumer Tech">
               <label class='multiselect-box-option' for="consumer-tech">Consumer Tech</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="digital-advertising" v-model="topic" value="Digital Advertising">
               <label class='multiselect-box-option' for="digital-advertising">Digital Advertising</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="internet-of-things" v-model="topic" value="Internet of Things">
-              <label class='multiselect-box-option' for="internet-of-things">Internet of Things</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="mergers-and-acquisitions" v-model="topic" value="Mergers and Acquisitions">
-              <label class='multiselect-box-option' for="mergers-and-acquisitions">Mergers and Acquisitions</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="e-commerce" v-model="topic" value="E-Commerce">
+              <label class='multiselect-box-option' for="e-commerce">E-Commerce</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="mobile" v-model="topic" value="Mobile">
               <label class='multiselect-box-option' for="mobile">Mobile</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="music" v-model="topic" value="Music">
-              <label class='multiselect-box-option' for="music">Music</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="native-advertising" v-model="topic" value="Native Advertising">
               <label class='multiselect-box-option' for="native-advertising">Native Advertising</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="ott" v-model="topic" value="OTT">
               <label class='multiselect-box-option' for="ott">OTT</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="podcasting" v-model="topic" value="Podcasting">
+              <label class='multiselect-box-option' for="podcasting">Podcasting</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="programmatic-advertising" v-model="topic" value="Programmatic Advertising">
               <label class='multiselect-box-option' for="programmatic-advertising">Programmatic Advertising</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="publishers" v-model="topic" value="Publishers">
               <label class='multiselect-box-option' for="publishers">Publishers</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="regulation" v-model="topic" value="Regulation">
-              <label class='multiselect-box-option' for="regulation">Regulation</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="social-impact" v-model="topic" value="Social Impact">
+              <label class='multiselect-box-option' for="social-impact">Social Impact</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="social-media" v-model="topic" value="Social Media">
               <label class='multiselect-box-option' for="social-media">Social Media</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="streaming-music" v-model="topic" value="Streaming Music">
               <label class='multiselect-box-option' for="streaming-music">Streaming Music</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="travel" v-model="topic" value="Travel">
+              <label class='multiselect-box-option' for="travel">Travel</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="travel-insurance" v-model="topic" value="Travel Insurance">
+              <label class='multiselect-box-option' for="travel-insurance">Travel Insurance</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="tv" v-model="topic" value="TV">
+              <label class='multiselect-box-option' for="tv">TV</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="tv-advertising" v-model="topic" value="TV Advertising">
               <label class='multiselect-box-option' for="tv-advertising">TV Advertising</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="tv/film" v-model="topic" value="TV/Film">
-              <label class='multiselect-box-option' for="tv/film">TV/Film</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="video" v-model="topic" value="Video">
               <label class='multiselect-box-option' for="video">Video</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="virtual-reality" v-model="topic" value="Virtual Reality">
+              <label class='multiselect-box-option' for="virtual-reality">Virtual Reality</label>
             </div>
             <p :hidden="isTopicSelected" class="topic-prompt">Please select related topic(s)</p>
           </section>
@@ -114,7 +113,7 @@
 
             <p :hidden="isCompanySelected" class="topic-prompt">Please assign company</p>
           </section>
-          <section>
+          <section class="checkbox-wrapper">
             <input class="checkbox" type="checkbox" id="checkbox" v-model="recommended" style="display: inline-block;">
             <label class="recommended" for="checkbox">Recommended</label>
           </section>
@@ -148,7 +147,7 @@
             </div>
             <div class="preview-topic-wrapper">
               <h3 class="preview-header">Topics:</h3>
-              <p class="preview-topic-chip" v-for="topic in topic">{{ topic }}</p>
+              <p class="preview-topic-chip" v-for="topic in topic" >{{ topic }}</p>
               </div>
             </div>
             <!-- <p>{{ company }}</p> -->
@@ -215,12 +214,15 @@
         description: '',
         topic: [],
         company: [],
-        recommended: false,
-        topicSelect:'',
-        companyList: ['NBC', 'Time Inc']
+        recommended: false
       }
     },
     methods: {
+      removeTopic(topic, id){
+        let index = this.topic.indexOf(topic);
+        this.topic.splice(index, 1);
+        document.getElementById(id).checked=false;
+      },
       toggleSelect(select){
         if(select == "topic"){
           if(this.topicToggle == true){
