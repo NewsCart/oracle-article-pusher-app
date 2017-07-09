@@ -45,48 +45,78 @@
           </section>
 
           <section>
-            <label for="topic">Topic:</label>
-            <p class="select-info">Hold down Command(mac)/Ctrl (windows) to select/deselect multiple items</p>
-            <select class="multiselect-box" v-model="topic" multiple>
-              <option>Artificial Intelligence</option>
-              <option>AR/VR</option>
-              <option>Big Data</option>
-              <option>Bots</option>
-              <option>Brands</option>
-              <option>Commerce</option>
-              <option>Consumer Tech</option>
-              <option>Digital Advertising</option>
-              <option>Internet of Things</option>
-              <option>Mergers and Acquisitions</option>
-              <option>Mobile</option>
-              <option>Music</option>
-              <option>Native Advertising</option>
-              <option>OTT</option>
-              <option>Programmatic Advertising</option>
-              <option>Publishers</option>
-              <option>Regulation</option>
-              <option>Social Media</option>
-              <option>Streaming Music</option>
-              <option>TV Advertising</option>
-              <option>TV/Film</option>
-              <option>Video</option>
-            </select>
+            <!-- <label for="topic">Topic:</label> -->
+            <div class="select-launcher" @click="toggleSelect('topic')">
+              <h4 class="select-title">Topic</h4>
+              <div class="arrow-down"></div>
+            </div>
+            <div class="multiselect-box" :hidden="topicToggle" v-model="topic" multiple>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="artificial-intelligence" v-model="topic" value="Artificial Intelligence">
+              <label class='multiselect-box-option' for="artificial-intelligence">Artificial Intelligence</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="AR/VR" v-model="topic" value="AR/VR">
+              <label class='multiselect-box-option' for="AR/VR">AR/VR</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="big-data" v-model="topic" value="Big Data">
+              <label class='multiselect-box-option' for="big-data">Big Data</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="bots" v-model="topic" value="Bots">
+              <label class='multiselect-box-option' for="bots">Bots</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="brands" v-model="topic" value="Brands">
+              <label class='multiselect-box-option' for="brands">Brands</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="commerce" v-model="topic" value="Commerce">
+              <label class='multiselect-box-option' for="commerce">Commerce</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="consumer-tech" v-model="topic" value="Consumer Tech">
+              <label class='multiselect-box-option' for="consumer-tech">Consumer Tech</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="digital-advertising" v-model="topic" value="Digital Advertising">
+              <label class='multiselect-box-option' for="digital-advertising">Digital Advertising</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="internet-of-things" v-model="topic" value="Internet of Things">
+              <label class='multiselect-box-option' for="internet-of-things">Internet of Things</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="mergers-and-acquisitions" v-model="topic" value="Mergers and Acquisitions">
+              <label class='multiselect-box-option' for="mergers-and-acquisitions">Mergers and Acquisitions</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="mobile" v-model="topic" value="Mobile">
+              <label class='multiselect-box-option' for="mobile">Mobile</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="music" v-model="topic" value="Music">
+              <label class='multiselect-box-option' for="music">Music</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="native-advertising" v-model="topic" value="Native Advertising">
+              <label class='multiselect-box-option' for="native-advertising">Native Advertising</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="ott" v-model="topic" value="OTT">
+              <label class='multiselect-box-option' for="ott">OTT</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="programmatic-advertising" v-model="topic" value="Programmatic Advertising">
+              <label class='multiselect-box-option' for="programmatic-advertising">Programmatic Advertising</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="publishers" v-model="topic" value="Publishers">
+              <label class='multiselect-box-option' for="publishers">Publishers</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="regulation" v-model="topic" value="Regulation">
+              <label class='multiselect-box-option' for="regulation">Regulation</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="social-media" v-model="topic" value="Social Media">
+              <label class='multiselect-box-option' for="social-media">Social Media</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="streaming-music" v-model="topic" value="Streaming Music">
+              <label class='multiselect-box-option' for="streaming-music">Streaming Music</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="tv-advertising" v-model="topic" value="TV Advertising">
+              <label class='multiselect-box-option' for="tv-advertising">TV Advertising</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="tv/film" v-model="topic" value="TV/Film">
+              <label class='multiselect-box-option' for="tv/film">TV/Film</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="video" v-model="topic" value="Video">
+              <label class='multiselect-box-option' for="video">Video</label>
+            </div>
             <p :hidden="isTopicSelected" class="topic-prompt">Please select related topic(s)</p>
           </section>
           <section class="user-select">
-            <label for="company">Company:</label>
-            <select class="multiselect-box" v-model="company" id="company" multiple>
-              <option>NBC</option>
-              <option>Time Inc</option>
-              <option>World Nomads</option>
-              <!--<option>Because Of Them We Can</option>
-              <option>Turner Center</option> -->
-            </select>
+            <!-- <label for="company">Company:</label> -->
+            <div class="select-launcher" @click="toggleSelect('company')">
+              <h4 class="select-title" v-if="this.company.length==0">Company</h4>
+              <h4 class="select-title user-list" v-for="company in company">{{ company }}</h4>
+              <div class="arrow-down"></div>
+            </div>
+            <div :hidden="companyToggle" class="multiselect-box" id="company">
+              <input type="checkbox" class=" multiselect-box-option hidden" id="nbc" v-model="company" value="NBC">
+              <label class='multiselect-box-option' for="nbc">NBC</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="time-inc" v-model="company" value="Time Inc">
+              <label class='multiselect-box-option' for="time-inc">Time Inc</label>
+            </div>
+
             <p :hidden="isCompanySelected" class="topic-prompt">Please assign company</p>
           </section>
           <section>
-            <input type="checkbox" id="checkbox" v-model="recommended" style="display: inline-block;">
-            <label style="display: inline-block;" for="checkbox">Recommended</label>
+            <input class="checkbox" type="checkbox" id="checkbox" v-model="recommended" style="display: inline-block;">
+            <label class="recommended" for="checkbox">Recommended</label>
           </section>
           <button id="submit-article" class="submit-btn" :disabled="!isFormFilled" @click="addArticle">Submit</button>
         </form>
@@ -96,19 +126,31 @@
       <div class="preview-wrapper">
         <div class="preview">
       		<h2>PREVIEW</h2>
-      		<div class="newscard" :style="{ 'background-image': 'url(' + imageLink + ')' }" style="background: linear-gradient(0deg,rgba(0,0,0,.8),transparent);">
-            <div class="newscard-content">
-                <h3 class="preview-title">{{ titlePush }}</h3>
-                <p class="preview-source">{{ sourcePush }}</p>
-                <p class="preview-source">{{ date }}</p>
-            </div>
-      		 <!-- <img id="preview-img" :src="imageLink" alt="" class="preview-img"> -->
+            <div class="nc-article-card" :style="{'background-image': 'url(' + imageLink + ')' }">
+              <img v-if="recommended" class="recommended-flag" src="../../static/imgs/newscart-icon-stroke-white.png" alt="nc-recommended">
+               <div class="nc-article-card__gradient">
+                 <div class="nc-article-card__content">
+                  <div class="nc-article-card__details">
+                    <h3 class="preview-title">{{ titlePush }}</h3>
+                    <p class="preview-source">{{ sourcePush }}</p>
+                    <p class='previw-source'>{{ date }}</p>
+                  </div>
+                </div>
+               </div>
+             </div>
       		</div>
       		<div class="preview-content">
             <!-- <p class="preview-author">{{ authorPush }}</p> -->
       			<!-- <p><a :href="url" class="preview-link" target="_blank">{{ url }}</a></p> -->
-            <p>Topics: {{ topic }}</p>
-            <p class="preview-description">Description: {{ description }}</p>
+            <div class="preview-topic-wrapper">
+              <h3 class="preview-header">Description:</h3>
+              <p style="font-weight: 300;">{{ description }}</p>
+            </div>
+            <div class="preview-topic-wrapper">
+              <h3 class="preview-header">Topics:</h3>
+              <p class="preview-topic-chip" v-for="topic in topic">{{ topic }}</p>
+              </div>
+            </div>
             <!-- <p>{{ company }}</p> -->
       		</div>
         </div>
@@ -160,6 +202,8 @@
     },
     data(){
       return {
+        topicToggle: true,
+        companyToggle: true,
         email: '',
         password: '',
         articlesRef: fb.database().ref('articles'),
@@ -171,10 +215,28 @@
         description: '',
         topic: [],
         company: [],
-        recommended: false
+        recommended: false,
+        topicSelect:'',
+        companyList: ['NBC', 'Time Inc']
       }
     },
     methods: {
+      toggleSelect(select){
+        if(select == "topic"){
+          if(this.topicToggle == true){
+            this.topicToggle = false;
+          }else{
+            this.topicToggle = true
+          }
+        }else{
+          if(this.companyToggle == true){
+            this.companyToggle = false;
+          }else{
+            this.companyToggle = true;
+          }
+
+        }
+      },
       addArticle(e) {
         e.preventDefault();
         let objectIDHolder = this.objectID;
