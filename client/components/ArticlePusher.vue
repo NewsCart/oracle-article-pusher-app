@@ -126,7 +126,7 @@
         <div class="preview">
       		<h2>PREVIEW</h2>
             <div class="nc-article-card" :style="{'background-image': 'url(' + imageLink + ')' }">
-              <img v-if="recommended" class="recommended-flag" src="../../static/imgs/newscart-icon-stroke-white.png" alt="nc-recommended">
+              <img v-if="recommended" class="recommended-flag" src="../../static/imgs/newscart-icon.png" alt="nc-recommended">
                <div class="nc-article-card__gradient">
                  <div class="nc-article-card__content">
                   <div class="nc-article-card__details">
