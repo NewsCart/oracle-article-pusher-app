@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+    <div style="margin: 0; padding: 0; border: 0; width: 100%">
       <div class="headline">
           <h2>PROMETHEUS</h2>
       </div>
@@ -101,7 +101,9 @@
             <!-- <label for="company">Company:</label> -->
             <div class="select-launcher" @click="toggleSelect('company')">
               <h4 class="select-title" v-if="this.company.length==0">Company</h4>
-              <h4 class="select-title user-list" v-for="company in company">{{ company }}</h4>
+              <h4 class="select-title" v-else-if="this.company.length==1">Company: {{ this.company[0] }}</h4>
+              <h4 class="select-title" v-else-if="this.company.length ==2">Company: {{this.company[0]}}, {{this.company[1]}}</h4>
+              <h4 class="select-title" v-else style="font-size:smaller;">Company: {{this.company[0]}}, {{this.company[1]}}, {{this.company[2].substr(0,3)}}...</h4>
               <div class="arrow-down"></div>
             </div>
             <div :hidden="companyToggle" class="multiselect-box" id="company">
@@ -119,25 +121,24 @@
           </section>
           <button id="submit-article" class="submit-btn" :disabled="!isFormFilled" @click="addArticle">Submit</button>
         </form>
-      </div>
+      </div><div class="preview-wrapper">
 <!-- ||| FORM END ||| -->
 <!-- ||| PREVIEW START ||| -->
-      <div class="preview-wrapper">
         <div class="preview">
       		<h2>PREVIEW</h2>
-            <div class="nc-article-card" :style="{'background-image': 'url(' + imageLink + ')' }">
-              <img v-if="recommended" class="recommended-flag" src="../../static/imgs/newscart-icon.png" alt="nc-recommended">
-               <div class="nc-article-card__gradient">
-                 <div class="nc-article-card__content">
-                  <div class="nc-article-card__details">
-                    <h3 class="preview-title">{{ titlePush }}</h3>
-                    <p class="preview-source">{{ sourcePush }}</p>
-                    <p class='previw-source'>{{ date }}</p>
-                  </div>
+          <div class="nc-article-card" :style="{'background-image': 'url(' + imageLink + ')' }">
+            <img v-if="recommended" class="recommended-flag" src="../../static/imgs/newscart-icon.png" alt="nc-recommended">
+            <div class="nc-article-card__gradient">
+              <div class="nc-article-card__content">
+                <div class="nc-article-card__details">
+                  <h3 class="preview-title">{{ titlePush }}</h3>
+                  <p class="preview-source">{{ sourcePush }}</p>
+                  <p class='previw-source'>{{ date }}</p>
                 </div>
-               </div>
-             </div>
-      		</div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
       		<div class="preview-content">
             <!-- <p class="preview-author">{{ authorPush }}</p> -->
       			<!-- <p><a :href="url" class="preview-link" target="_blank">{{ url }}</a></p> -->
@@ -147,14 +148,15 @@
             </div>
             <div class="preview-topic-wrapper">
               <h3 class="preview-header">Topics:</h3>
-              <p class="preview-topic-chip" v-for="topic in topic" >{{ topic }}</p>
-              </div>
+              <p v-if="this.topic.length==0" class='preview-topic-chip' style="visibility: hidden;">Your topics will show here.</p>
+              <p class="preview-topic-chip" v-else v-for="topic in topic" >{{ topic }}</p>
             </div>
+          </div>
             <!-- <p>{{ company }}</p> -->
-      		</div>
-        </div>
-  	  </div>
-    </div>
+      	</div>
+      </div>
+  	 </div>
+
     <!-- ||| PREVIEW END ||| -->
 </template>
 <script type="text/javascript">
@@ -163,13 +165,13 @@
   export default {
     computed: {
       date: function () {
-        return moment().format('MMMM DD YYYY h:mm A');
+        return moment().utc().format()
       },
       charsLeft(state) {
         return 70 - state.description.length;
       },
       objectID: function(){
-        return encodeURIComponent(this.title.split(' ').join('').toLowerCase());
+        return encodeURIComponent(this.source.split(' ').join('').toLowerCase() + "-" + this.title.split(' ').join('').toLowerCase());
       },
       isFormFilled: function () {
         return (
@@ -239,12 +241,15 @@
 
         }
       },
+      guidPart() {
+        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+      },
       addArticle(e) {
         e.preventDefault();
         let objectIDHolder = this.objectID;
         let companyHolder = this.company;
         if(this.company.length == 1){
-          fb.database().ref(companyHolder[0]).child(objectIDHolder).set({
+          fb.database().ref(companyHolder[0]).child(objectIDHolder + "-" + this.guidPart()).set({
             publishedAt: this.date,
             author: this.authorPush,
             source: this.sourcePush,
@@ -267,7 +272,7 @@
           })
         }else{
           for(let i = 0; i <= this.company.length; i++){
-            fb.database().ref(companyHolder[i]).child(objectIDHolder).set({
+            fb.database().ref(companyHolder[i]).child(objectIDHolder + "-" + this.guidPart()).set({
               publishedAt: this.date,
               author: this.authorPush,
               source: this.sourcePush,

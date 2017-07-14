@@ -36,17 +36,16 @@ input:-webkit-autofill {
   color: rgba(0, 0, 0, .87);
 }
 
-.app-wrapper{
-	margin-left: 20px;
+.form-wrapper{
+	width: 50%;
+  margin-top: 30px;
+	display: inline-block;
 }
 
-.form-wrapper{
+.article-input-form{
   padding-left: 5px;
-	width: 50%;
-	float: left;
   margin-left: 15px;
   border-right: 1px solid #d3d3d3;
-  margin-top: 30px;
 }
 
 .input-box{
@@ -88,8 +87,9 @@ input:-webkit-autofill {
 }
 
 .multiselect-box{
-  position: relative;
-  top: -44px;
+  position: absolute;
+  /*top: -44px;*/
+  z-index: 1;
   overflow: scroll;
 	width: 35%;
   max-height: 200px;
@@ -136,6 +136,8 @@ input:-webkit-autofill {
 .user-list{
   display: inline-block;
   width: auto;
+  margin: 0;
+
 }
 
 .topic-prompt{
@@ -172,8 +174,6 @@ input:-webkit-autofill {
 .checkbox {
   padding-top:5px;
 	background: #EEE;
-	/*box-shadow: 0 0 0 0 #1700fc inset, 0 0 0 2px #d3d3d3 inset, 0 0 0 8px #EEE inset, 0 0 0 0 #ddd inset, 0 0 0 0 #ddd;*/
-	/*padding: 8px;*/
 	border-radius: 5px;
   display: inline-block;
   transition: all .2s;
@@ -219,12 +219,11 @@ input:-webkit-autofill {
 }
 
 .preview-wrapper{
-	width: 48%;
-	float: right;
-}
-
-.preview{
-/*text-align: center;*/
+	width: 50%;
+  height: auto;
+	/*float: right;*/
+	display: inline-block;
+  margin-bottom: 30px;
 }
 
 .preview h2{
@@ -250,6 +249,8 @@ input:-webkit-autofill {
 
 .preview-topic-wrapper{
   width: 80%;
+  height: auto;
+  min-height: 30px;
   margin: auto;
 }
 
