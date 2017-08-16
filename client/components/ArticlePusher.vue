@@ -107,6 +107,10 @@
               <div class="arrow-down"></div>
             </div>
             <div :hidden="companyToggle" class="multiselect-box" id="company">
+              <input type="checkbox" class=" multiselect-box-option hidden" id="center-for-american-progress" v-model="company" value="Center for American Progress">
+              <label class='multiselect-box-option' for="center-for-american-progress">Center for American Progress</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="extremereach" v-model="company" value="ExtremeReach">
+              <label class='multiselect-box-option' for="extremereach">ExtremeReach</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="nbc" v-model="company" value="NBC">
               <label class='multiselect-box-option' for="nbc">NBC</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="time-inc" v-model="company" value="Time Inc">
