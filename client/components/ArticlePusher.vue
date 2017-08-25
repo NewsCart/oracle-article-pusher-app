@@ -109,6 +109,8 @@
             <div :hidden="companyToggle" class="multiselect-box" id="company">
               <input type="checkbox" class=" multiselect-box-option hidden" id="center-for-american-progress" v-model="company" value="Center for American Progress">
               <label class='multiselect-box-option' for="center-for-american-progress">Center for American Progress</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="exceptional-wines" v-model="company" value="Exceptional Wines">
+              <label class='multiselect-box-option' for="exceptional-wines">Exceptional Wines</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="extremereach" v-model="company" value="ExtremeReach">
               <label class='multiselect-box-option' for="extremereach">ExtremeReach</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="nbc" v-model="company" value="NBC">

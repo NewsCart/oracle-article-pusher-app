@@ -1,5 +1,6 @@
 {
   "projects": {
-    "articlepusher": "articlepusher-fdeae"
+    "articlepusher": "articlepusher-fdeae",
+    "default": "articlepusher-fdeae"
   }
 }
