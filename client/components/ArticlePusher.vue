@@ -115,6 +115,8 @@
               <label class='multiselect-box-option' for="exceptional-wines">Exceptional Wines</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="extremereach" v-model="company" value="ExtremeReach">
               <label class='multiselect-box-option' for="extremereach">ExtremeReach</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="ingram-content-group" v-model="company" value="Ingram Content Group">
+              <label class='multiselect-box-option' for="ingram-content-group">Ingram Content Group</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="nbc" v-model="company" value="NBC">
               <label class='multiselect-box-option' for="nbc">NBC</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="time-inc" v-model="company" value="Time Inc">
