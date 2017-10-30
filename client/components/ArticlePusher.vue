@@ -117,10 +117,10 @@
               <label class='multiselect-box-option' for="extremereach">ExtremeReach</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="ingram-content-group" v-model="company" value="Ingram Content Group">
               <label class='multiselect-box-option' for="ingram-content-group">Ingram Content Group</label>
-              <input type="checkbox" class=" multiselect-box-option hidden" id="nbc" v-model="company" value="NBC">
-              <label class='multiselect-box-option' for="nbc">NBC</label>
               <input type="checkbox" class=" multiselect-box-option hidden" id="time-inc" v-model="company" value="Time Inc">
               <label class='multiselect-box-option' for="time-inc">Time Inc</label>
+              <input type="checkbox" class=" multiselect-box-option hidden" id="turner-family-center" v-model="company" value="Turner Family Center">
+              <label class='multiselect-box-option' for="turner-family-center">Turner Family Center</label>
             </div>
 
             <p :hidden="isCompanySelected" class="topic-prompt">Please assign company</p>
